@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div  th:switch="${rooms}" class="container">
+        <h2>Room Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th> Room No</th>
+                    <th>No Of Bed</th>
+                    <th>hasAC</th>
+                    <th>hasTV</th>
+                    <th>hasWIFI</th>
+                    <th>hasGizer</th>
+                     <th>hasPhone</th>
+                     <th>room_type</th>
+                    <th>pricePerDay</th>
+                     <th>isActive</th>
+                     <th>Edit</th>
+                     <th>Delete</th>
+                    </tr>
+            </thead>
+            <tbody>
+                 <tr th:each="roomdetail : ${rooms}">
+                    <td th:text="${roomdetail.roomNo}"></td>
+                    <td th:text="${roomdetail.bed}"></td>
+                    <td th:text="${roomdetail.hasAC}"></td>
+                    <td th:text="${roomdetail.hasTV}"></td>
+                    <td th:text="${roomdetail.hasWIFI}"></td>
+                    <td th:text="${roomdetail.hasGizer}"></td>
+                    <td th:text="${roomdetail.hasPhone}"></td>
+                    <td th:text="${roomdetail.room_type}"></td>
+                    <td th:text="${roomdetail.pricePerDay}"></td>
+                    <td th:text="${roomdetail.isActive}"></td>
+      
+	           
+        <!-- ... other room details ... -->
+        <td>
+            <a th:href="@{/addroomUrl}">Edit</a>
+        </td>
+        <td>
+            <form th:action="@{/deleteRoomByRoomNo/{id}(id=${roomdetail.roomNo})}" method="post">
+                       <button type="submit">Delete</button>
+            </form>
+        </td>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

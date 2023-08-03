@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Manager Dashboard</title>
+  <link rel="stylesheet" href="css.css">
+  <style>
+	   .GFG {
+            background-color: white;
+            border: 2px solid black;
+            color: green;
+            padding: 5px 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 20px;
+            margin: 10px 30px;
+            cursor: pointer;
+            text-decoration:none;
+        }
+	  
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manager Dashboard</h1>
+  </header>  
+  <main>
+    <section>
+      <h2>Manager Actions</h2>
+      <!-- Buttons to navigate to different admin pages -->
+      <br class="admin-actions">
+		<a href="http://localhost:5000/viewbookingUrl" class="GFG">View Booking</a>
+		
+		<a href="http://localhost:5000/createBookingUrl" class="GFG">New Booking</a>
+		
+		<a href="http://localhost:5000/addroomUrl" class="GFG">Add Room</a>
+		<a href="http://localhost:5000/viewroomUrl" class="GFG"> Room List</a>
+		<a href="http://localhost:5000/logout" class="GFG">LogOut</a>
+		  
+      </div>
+    </section>
+    
+    
+  </main>
+</body>
+</html>

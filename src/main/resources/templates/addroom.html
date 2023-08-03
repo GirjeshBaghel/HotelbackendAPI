@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Room Form</h2>
+        <form th:action=" @{/createRoom}" method="post" th:object="${room}">
+			<div class="form-group">
+                <label for="roomNo">Bed:</label>
+                <input type="number" id="roomNo" name="roomNo" th:field="*{roomNo}" required>
+            </div>
+            <div class="form-group">
+                <label for="bed">Bed:</label>
+                <input type="number" id="bed" name="bed" th:field="*{bed}" required>
+            </div>
+            <div class="form-group">
+                <label for="hasAC">Has AC:</label>
+                <input type="checkbox" id="hasAC" th:field="*{hasAC}" name="hasAC">
+            </div>
+            <div class="form-group">
+                <label for="hasTV">Has TV:</label>
+                <input type="checkbox" id="hasTV" th:field="*{hasTV}" name="hasTV">
+            </div>
+            <div class="form-group">
+                <label for="hasWIFI">Has WIFI:</label>
+                <input type="checkbox" id="hasWIFI" th:field="*{hasWIFI}"name="hasWIFI">
+            </div>
+            <div class="form-group">
+                <label for="hasGizer">Has Gizer:</label>
+                <input type="checkbox" id="hasGizer"  th:field="*{hasGizer}"name="hasGizer">
+            </div>
+            <div class="form-group">
+                <label for="hasPhone">Has Phone:</label>
+                <input type="checkbox" id="hasPhone" th:field="*{hasPhone}" name="hasPhone">
+            </div>
+            <div class="form-group">
+                <label for="roomType">Room Type:</label>
+                <input type="text" id="room_type" name="room_type"  th:field="*{room_type}"required>
+            </div>
+            <div class="form-group">
+                <label for="pricePerDay">Price Per Day:</label>
+                <input type="number" id="pricePerDay" name="pricePerDay" th:field="*{pricePerDay}"step="0.01" required>
+            </div>
+            <!--<div class="form-group">
+                <label for="isActive">Is Active:</label>
+                <input type="checkbox" id="isActive"  th:field="*{isActive}"name="isActive">
+            </div>-->
+            <button type="submit">Save Room</button>
+        </form>
+    </div>
+</body>
+</html>

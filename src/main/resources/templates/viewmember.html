@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Page</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        btn{
+			background-color: #000;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+		}
+		 .GFG {
+            background-color: white;
+            border: 2px solid black;
+            color: green;
+            padding: 9px 5px;
+            border-radius: 10px;
+            display: flex;
+             float: right;
+            display: inline-block;
+            font-size: 20px;
+            margin: 10px 30px;
+            cursor: pointer;
+            text-decoration:none
+        }
+        .adjust {
+			display: flex;
+			justify-content: space-between;
+		}
+    </style>
+</head>
+
+
+<body>
+    <div  th:switch="${staffdetails}" class="container">
+		
+        
+        <div class="adjust">
+			<h2>Member Table</h2>
+			<a href="http://localhost:5000/adminpanelUrl" class="GFG">Admin Panel</a>
+		</div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th> Employee ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Address</th>
+                    <th>Phone No</th>
+                     <th>Role</th>
+                     <th>Edit</th>
+                     <th>Delete</th>
+                    </tr>
+            </thead>
+            <tbody>
+                 <tr th:each="staffdetail : ${staffdetails}">
+                    <td th:text="${staffdetail.adminId}"></td>
+                    <td th:text="${staffdetail.adName}"></td>
+                    <td th:text="${staffdetail.adEmail}"></td>
+                    <td th:text="${staffdetail.adPassword}"></td>
+                    <td th:text="${staffdetail.cusAddress}"></td>
+                    <td th:text="${staffdetail.phoneno}"></td>
+                    <td th:text="${staffdetail.role}"></td>
+                    
+						<td>
+							<button><a th:href="@{/addmemberurl}">Edit</a></button>
+						</td>
+						<td>
+							<form th:action="@{/deleteMemberById/{id}(id=${staffdetail.adminId})}" method="post">
+								<button type="submit">Delete</button>
+							</form>
+						</td>
+						</tbody>
+						</table>
+						</div>
+</body>
+</html>

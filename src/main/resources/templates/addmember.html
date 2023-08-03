@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    .form-group .role-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group .role-options {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group .role-options label {
+      margin-right: 10px;
+    }
+
+    .form-group .role-options input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .form-group .submit-btn {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .form-group .submit-btn button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-group .submit-btn button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>User Registration Form</h2>
+    <form th:action=" @{/addMembers}" method="post" th:object="${admin}">
+      <div class="form-group"> 
+        <label for="name">Name:</label>
+        <input type="text"  th:field="*{adName}" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email"  th:field="*{adEmail}" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password"  name="passwor"  th:field="*{adPassword}" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel"  name="phone" th:field="*{phoneno}" required>
+      </div>
+    	 <div class="form-group">
+        <label for="role">Role:</label>
+        <div class="role-options">
+          <label class="role-label">
+            <input type="radio" name="role" value="1"  id="1"  th:field="*{role}"> Admin
+          </label>
+          <label class="role-label">
+            <input type="radio" name="role" value="2"  id="2" th:field="*{role}" required> Manager
+          </label>
+          <label class="role-label">
+            <input type="radio" name="role" value="0"  id="0" th:field="*{role}" required>Staff
+          </label>
+        </div>
+     
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" th:field="*{cusAddress}"  required></textarea>
+      </div>
+      <div class="form-group submit-btn">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
